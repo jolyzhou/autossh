@@ -14,7 +14,7 @@ import (
 
 type serverInfo struct {
 	Host   string `json:"host"`
-	Port   int `json:"port"`
+	Port   int    `json:"port"`
 	User   string `json:"user"`
 	Passwd string `json:"passwd"`
 }
@@ -58,7 +58,6 @@ func connect(user, password, host string, port int) (*ssh.Session, error) {
 	return session, nil
 }
 
-
 func main() {
 	var (
 		allInfo []areaSer
@@ -70,20 +69,20 @@ func main() {
 	}
 	json.Unmarshal(b, &allInfo)
 	fmt.Println("================================================")
-    fmt.Println("===================AUTO SSH=====================")
+	fmt.Println("===================AUTO SSH=====================")
 	fmt.Println("=================SERVER LIST====================")
 	for i, elem := range allInfo {
 		fmt.Println(i, ":", elem.Area)
 	}
 	fmt.Println("================================================")
 	fmt.Println("=========please input the number of area==========")
-    fmt.Print("=========NUMBER=======> ")
+	fmt.Print("=========NUMBER=======> ")
 	fmt.Scanf("%d", &num)
-	// fmt.Println(allInfo[num].Info.Host)
-    if num < 0 || num > len(allInfo) {
-        fmt.Println("Please select the right number.")
-        os.Exit(1)
-    }
+
+	if num < 0 || num > len(allInfo) {
+		fmt.Println("Please select the right number.")
+		os.Exit(1)
+	}
 	session, err := connect(allInfo[num].Info.User, allInfo[num].Info.Passwd, allInfo[num].Info.Host, allInfo[num].Info.Port)
 	if err != nil {
 		log.Fatal(err)
