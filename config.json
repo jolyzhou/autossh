@@ -1,0 +1,20 @@
+[
+    {
+        "area": "China",
+        "info": {
+            "host": "127.0.0.1",
+            "port": 22,
+            "user": "root",
+            "passwd": "root"
+        }
+    },
+    {
+        "area": "USA",
+        "info": {
+            "host": "127.0.0.1",
+            "port": 22,
+            "user": "root",
+            "passwd": "root"
+        }
+    }
+]
